@@ -1,35 +1,53 @@
 <template>
   <div class="header-comp">
+    <FlowbiteCaretLeftSolid @click="changePage(-1)" :disabled="currentPage <= 1" />
     <div class="header-center">
       <div class="title" style="order: 3">安吉梅西智慧工地管理系统</div>
       <div
         class="menu-item"
-        v-for="(item, index) in routes"
-        :key="item.path"
+        v-for="(route, index) in comRouters"
+        :key="route ? route.path : '' + index"
         :style="{
           order: index
         }"
+        :class="{ active: route && route.path === currentRoute.path }"
       >
-        <div
-          class="bg"
-          :class="{
-            bg1: index >= 3
-          }"
-        ></div>
-        {{ item.meta.title }}
+        <div v-if="route" class="bg" :class="{ 'scale-x': index >= 3 }"></div>
+        {{ route ? route.meta.title : '' }}
       </div>
     </div>
+    <FlowbiteCaretLeftSolid
+      right
+      @click="changePage(1)"
+      :disabled="currentPage * 6 - routes.length > 0"
+    />
   </div>
 </template>
 
 <script setup>
-// 获取当前菜单
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import FlowbiteCaretLeftSolid from '@/layouts/components/FlowbiteCaretLeftSolid.vue'
 const router = useRouter()
-const routes = router.getRoutes()
+const routes = ref(router.getRoutes())
 const currentRoute = router.currentRoute
-console.log(currentRoute, routes)
-const currentPage = currentRoute.value.query.m || 1
+routes.value = routes.value.sort((a, b) => a.meta.order - b.meta.order)
+console.log(router.currentRoute.value.hash)
+
+const currentPage = computed(() => {
+  let currentHash = router.currentRoute.value.hash
+  return parseInt(currentHash.replace('#', '')) || 1
+})
+
+const comRouters = computed(() => {
+  let startIndex = (currentPage.value - 1) * 6
+  let _routes = routes.value.slice(startIndex, startIndex + 6)
+  return [..._routes, ...Array(6 - _routes.length).fill(null)]
+})
+
+const changePage = (step) => {
+  router.push({ hash: '#' + (currentPage.value + step) })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -37,16 +55,25 @@ const currentPage = currentRoute.value.query.m || 1
   height: 148px;
   display: flex;
   justify-content: center;
+  position: relative;
   .header-center {
     height: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 850px 1fr 1fr 1fr;
+    grid-template-columns: 156px 156px 156px 840px 156px 156px 156px;
+    justify-items: center;
     align-items: center;
     .title {
-      font-size: 24px;
+      font-size: 30px;
       color: #fff;
       text-align: center;
       transform: translateY(-20px);
+      font-weight: bold;
+      background: linear-gradient(to bottom, #ffff 50%, #04def6);
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow:
+        15px 15px 15px #04def6,
+        0px 0px 2px #fff;
     }
     .menu-item {
       width: 156px;
@@ -56,19 +83,25 @@ const currentPage = currentRoute.value.query.m || 1
       justify-content: center;
       position: relative;
       cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      white-space: nowrap;
+      color: transparent;
+      background-image: -webkit-linear-gradient(#fff 30%, #0667c0 100%);
+      -webkit-background-clip: text;
       .bg {
         position: absolute;
         width: 100%;
         height: 100%;
         background: url('@/assets/images/menu-btn.png') no-repeat;
         z-index: -1;
-
-        &:hover {
+      }
+      &.active {
+        .bg {
           background: url('@/assets/images/menu-btn-active.png') no-repeat;
         }
       }
-
-      .bg1 {
+      .scale-x {
         transform: scaleX(-1);
       }
     }

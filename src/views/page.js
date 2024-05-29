@@ -1,4 +1,4 @@
 export default {
   title: '首页',
-  sort: 0
+  order: 0
 }
