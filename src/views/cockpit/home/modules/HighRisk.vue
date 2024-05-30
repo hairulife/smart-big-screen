@@ -2,7 +2,7 @@
   <div class="module">
     <div class="top">
       <ElRadioGroup v-model="type">
-        <ElRadio v-for="item in typeList" :key="item.value" :label="item.value">{{
+        <ElRadio v-for="item in typeList" :key="item.value" :value="item.value">{{
           item.label
         }}</ElRadio>
       </ElRadioGroup>

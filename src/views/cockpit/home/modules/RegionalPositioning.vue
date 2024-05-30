@@ -22,11 +22,11 @@ import { ref } from 'vue'
 const userCount = [
   {
     num: 122,
-    name: '人口总数'
+    name: '当前在场人数'
   },
   {
     num: 152,
-    name: '人口总数'
+    name: '今日累计人数'
   }
 ]
 const option = ref({
