@@ -1,5 +1,5 @@
 <template>
-  <router-view></router-view>
+  <div>环境监测</div>
 </template>
 
 <script setup></script>

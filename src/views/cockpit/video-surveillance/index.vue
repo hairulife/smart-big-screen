@@ -1,5 +1,5 @@
 <template>
-  <router-view></router-view>
+  <div>视频监控</div>
 </template>
 
 <script setup></script>

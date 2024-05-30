@@ -1,5 +1,5 @@
 <template>
-  <router-view></router-view>
+  <div>车辆管理</div>
 </template>
 
 <script setup></script>

@@ -5,3 +5,33 @@ body {
   overflow: hidden;
   font-family: 'Noto Sans SC', sans-serif;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  --sb-track-color: #353e65;
+  --sb-thumb-color: #31bdbc;
+  --sb-size: 10px;
+}
+
+::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 6px;
+  border: 3px solid #353e65;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}

@@ -1,5 +1,5 @@
 <template>
-  <router-view></router-view>
+  <div>隐患模块</div>
 </template>
 
 <script setup></script>
