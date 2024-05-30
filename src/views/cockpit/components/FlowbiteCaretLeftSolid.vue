@@ -55,8 +55,8 @@ svg {
   height: 50px;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%) scaleX(0.7) translateY(-10px);
-  left: 23px;
+  transform: translateY(-50%) scaleX(0.7) translateY(-6px);
+  left: 35px;
   fill: url(#grad);
   &:hover {
     fill: url(#hover);
@@ -68,8 +68,8 @@ svg {
   }
   &.right {
     left: auto;
-    right: 23px;
-    transform: translateY(-50%) scaleX(-1) scaleX(0.7);
+    right: 35px;
+    transform: translateY(-50%) scaleX(-1) scaleX(0.7) translateY(-6px);
   }
 }
 </style>

@@ -1,9 +1,9 @@
 @import 'normalize';
 @import 'noto-sans-sc';
 
-body {
-  overflow: hidden;
+:root {
   font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
 }
 
 * {
@@ -11,6 +11,7 @@ body {
 }
 
 body {
+  overflow: hidden;
   --sb-track-color: #353e65;
   --sb-thumb-color: #31bdbc;
   --sb-size: 10px;

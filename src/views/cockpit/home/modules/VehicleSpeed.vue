@@ -1,5 +1,5 @@
 <template>
-  <div class="regional-positioning">
+  <div class="module">
     <div class="top">
       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
         <path
@@ -67,7 +67,7 @@ const dataSource = [
 </script>
 
 <style lang="scss" scoped>
-.regional-positioning {
+.module {
   height: 100%;
   padding: 10px;
   box-sizing: border-box;

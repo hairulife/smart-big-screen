@@ -1,8 +1,8 @@
 <template>
-  <div class="regional-positioning">
+  <div class="module">
     <div class="top">用电量：90.5KW/h</div>
     <div class="chart">
-      <ChartComp mark="RegionalPositioning" :option="option" />
+      <ChartComp mark="SmartMeter" :option="option" />
     </div>
   </div>
 </template>
@@ -56,7 +56,7 @@ const option = ref({
 </script>
 
 <style lang="scss" scoped>
-.regional-positioning {
+.module {
   height: 100%;
   padding: 10px;
   box-sizing: border-box;

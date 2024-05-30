@@ -209,13 +209,13 @@ export default {
     }
   },
   // 柱图
-  generateBarSeries({ labelPosition = 'top' } = {}) {
+  generateBarSeries({ labelPosition = 'top', barMaxWidth = this.getSize(10) } = {}) {
     return {
       type: 'bar',
       // emphasis: {
       //   focus: "self",
       // },
-      barMaxWidth: this.getSize(10),
+      barMaxWidth,
       barGap: '0.5',
       itemStyle: {
         borderRadius: [this.getSize(4), this.getSize(4), 0, 0]

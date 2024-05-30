@@ -24,21 +24,24 @@ const cards = [
     }
   },
   {
-    title: '今日隐患违章情况'
+    title: '今日隐患违章情况',
+    component: defineAsyncComponent(() => import('./modules/HiddenDangersViolations.vue'))
   },
   {
     title: '车辆测速',
     component: defineAsyncComponent(() => import('./modules/VehicleSpeed.vue'))
   },
   {
-    title: '不符合项分布情况'
+    title: '不符合项分布情况',
+    component: defineAsyncComponent(() => import('./modules/NonConformity.vue'))
   },
   {
     title: '智能电表当日用电统计',
     component: defineAsyncComponent(() => import('./modules/SmartMeter.vue'))
   },
   {
-    title: '每日高风险情况'
+    title: '每日高风险情况',
+    component: defineAsyncComponent(() => import('./modules/HighRisk.vue'))
   }
 ]
 </script>

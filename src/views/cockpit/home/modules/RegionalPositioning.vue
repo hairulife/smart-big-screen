@@ -1,5 +1,5 @@
 <template>
-  <div class="regional-positioning">
+  <div class="module">
     <div class="user">
       <div class="item" v-for="item in userCount" :key="item.count">
         <div class="num">
@@ -73,7 +73,7 @@ const option = ref({
 </script>
 
 <style lang="scss" scoped>
-.regional-positioning {
+.module {
   height: 100%;
   padding: 10px;
   box-sizing: border-box;

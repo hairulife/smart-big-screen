@@ -71,7 +71,7 @@ const jumpTo = (route) => {
   .header-center {
     height: 100%;
     display: grid;
-    grid-template-columns: 156px 156px 156px 840px 156px 156px 156px;
+    grid-template-columns: 150px 150px 150px 840px 150px 150px 150px;
     justify-items: center;
     align-items: center;
     transform: translateY(-10px);
@@ -88,7 +88,7 @@ const jumpTo = (route) => {
         0px 0px 2px #fff;
     }
     .menu-item {
-      width: 156px;
+      width: 150px;
       height: 40px;
       display: flex;
       align-items: center;
@@ -104,6 +104,7 @@ const jumpTo = (route) => {
         width: 100%;
         height: 100%;
         background: url('@/assets/images/menu-btn.png') no-repeat;
+        background-size: 100% 100%;
       }
       .route-title {
         background-image: -webkit-linear-gradient(#fff 50%, #a9d5ff 100%);
@@ -114,6 +115,7 @@ const jumpTo = (route) => {
       &.active {
         .bg {
           background: url('@/assets/images/menu-btn-active.png') no-repeat;
+          background-size: 100% 100%;
         }
       }
       .scale-x {

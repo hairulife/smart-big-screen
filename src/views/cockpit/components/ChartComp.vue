@@ -1,61 +1,60 @@
 <template>
-  <div class="data-dashboard-chart"></div>
+  <div class="data-dashboard-chart" ref="chartRef"></div>
 </template>
 
-<script>
+<script setup>
+import { ref, defineProps, watch, nextTick, getCurrentInstance, markRaw } from 'vue'
 import * as echarts from 'echarts'
 import chartAdapter from '../utils/chartAdapter.js'
 import chartPool from '../utils/chartPool.js'
-export default {
-  props: {
-    mark: {
-      type: String
-    },
-    option: {
-      type: Object
-    }
+const chartRef = ref(null)
+
+const chart = ref(null)
+const props = defineProps({
+  mark: {
+    type: String
   },
-  data() {
-    return {
-      chart: null
-    }
-  },
-  watch: {
-    option: {
-      handler(val) {
-        if (!this.chart) {
-          this.$nextTick(() => {
-            this.init()
-            this.chart.setOption(Object.assign(chartAdapter.generateInitOption(), val))
-          })
-        } else {
-          this.chart.setOption(Object.assign(chartAdapter.generateInitOption(), val))
-        }
-      },
-      deep: true,
-      immediate: true
-    }
-  },
-  methods: {
-    init() {
-      this.chart = echarts.init(this.$el, 'dark', {
-        renderer: 'canvas'
+  option: {
+    type: Object
+  }
+})
+
+const { attrs } = getCurrentInstance()
+
+// 监听 option 变化
+watch(
+  () => props.option,
+  (val) => {
+    if (!chart.value) {
+      nextTick(() => {
+        init()
+        chart.value.setOption(Object.assign(chartAdapter.generateInitOption(), val))
       })
-
-      // window.addEventListener("resize", () => {
-      //   this.chart.resize();
-      // });
-
-      // this.initEvent()
-
-      // 注册实例池
-      chartPool.alloc(this.mark, this.chart)
+    } else {
+      chart.value.setOption(Object.assign(chartAdapter.generateInitOption(), val))
     }
-    // initEvent() {
-    //   if ('click' in this.$listeners) {
-    //     this.chart.on('click', this.$listeners.click)
-    //   }
-    // }
+  },
+  { deep: true, immediate: true }
+)
+
+// 初始化图表
+const init = () => {
+  chart.value = markRaw(
+    echarts.init(chartRef.value, 'dark', {
+      renderer: 'svg'
+    })
+  )
+
+  initEvent()
+
+  // 注册实例池
+  chartPool.alloc(props.mark, chart.value)
+}
+
+// 初始化事件
+const initEvent = () => {
+  if ('click' in attrs) {
+    chart.value.on('click', attrs.click)
   }
 }
 </script>
