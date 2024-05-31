@@ -52,7 +52,6 @@ onMounted(() => {
     width: 100%;
     height: calc(100% - 102px);
     padding: 0 40px 45px;
-    box-sizing: border-box;
   }
 
   .bg-top-left {
@@ -63,7 +62,6 @@ onMounted(() => {
     height: 136px;
     background: url('@/views/cockpit/images/header-bg.png') no-repeat;
     background-size: 100% 100%;
-    z-index: 10;
   }
   .bg-top-right {
     position: absolute;
@@ -74,7 +72,6 @@ onMounted(() => {
     background: url('@/views/cockpit/images/header-bg.png') no-repeat;
     background-size: 100% 100%;
     transform: scaleX(-1);
-    z-index: 10;
   }
 
   .bg-left {
@@ -103,7 +100,6 @@ onMounted(() => {
     height: 110px;
     background: url('@/views/cockpit/images/bottom-bg.png') no-repeat;
     background-size: 100% 100%;
-    z-index: 10;
   }
   .bg-bottom-right {
     position: absolute;
@@ -114,7 +110,6 @@ onMounted(() => {
     height: 110px;
     background: url('@/views/cockpit/images/bottom-bg.png') no-repeat;
     background-size: 100% 100%;
-    z-index: 10;
   }
 }
 </style>

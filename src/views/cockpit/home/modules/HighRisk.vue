@@ -65,7 +65,6 @@ const option = ref({
 .module {
   height: 100%;
   padding: 10px;
-  box-sizing: border-box;
   .top {
     display: flex;
     height: 60px;

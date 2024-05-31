@@ -7,7 +7,12 @@
           <slot name="tools" />
         </div>
       </div>
-      <div class="cockpit-card-body">
+      <div
+        class="cockpit-card-body"
+        :class="{
+          full: props.title === ''
+        }"
+      >
         <slot />
       </div>
       <!-- 加载动画 -->
@@ -41,13 +46,11 @@ const props = defineProps({
 .cockpit-card {
   width: 100%;
   overflow: hidden;
-  box-sizing: border-box;
   position: relative;
   border: 1px solid #294eaf;
   background-color: #fff;
   border-image: radial-gradient(#2961ca 70%, #0a267a 130%) 5;
   background: linear-gradient(to bottom, hsla(222, 100%, 23%, 0.856) 10%, rgba(0, 0, 0, 0.5) 60%);
-  z-index: 100;
   .cockpit-card-wrapper {
     height: 100%;
     position: relative;
@@ -60,7 +63,6 @@ const props = defineProps({
     align-items: center;
     position: relative;
     display: flex;
-    box-sizing: border-box;
     border-bottom: 1px solid;
     border-image: linear-gradient(to right, #2457bd00, #bebdbd94, #2457bd00) 1 10;
 
@@ -106,6 +108,10 @@ const props = defineProps({
   &-body {
     height: calc(100% - 45px);
     position: relative;
+
+    &.full {
+      height: 100%;
+    }
   }
 
   .loading-wrapper {

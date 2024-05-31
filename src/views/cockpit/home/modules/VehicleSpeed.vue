@@ -25,7 +25,7 @@ const columns = [
   {
     title: '序号',
     align: 'center',
-    width: 80,
+    width: 50,
     customRender(text, index) {
       return index + 1
     }
@@ -62,6 +62,66 @@ const dataSource = [
   {
     val1: '卡口5',
     val2: 50
+  },
+  {
+    val1: '卡口6',
+    val2: 60
+  },
+  {
+    val1: '卡口7',
+    val2: 70
+  },
+  {
+    val1: '卡口8',
+    val2: 80
+  },
+  {
+    val1: '卡口9',
+    val2: 90
+  },
+  {
+    val1: '卡口10',
+    val2: 100
+  },
+  {
+    val1: '卡口11',
+    val2: 110
+  },
+  {
+    val1: '卡口12',
+    val2: 120
+  },
+  {
+    val1: '卡口13',
+    val2: 130
+  },
+  {
+    val1: '卡口14',
+    val2: 140
+  },
+  {
+    val1: '卡口15',
+    val2: 150
+  },
+  {
+    val1: '卡口16',
+    val2: 160
+  },
+  {
+    val1: '卡口17',
+    val2: 170
+  },
+  {
+    val1: '卡口18',
+    val2: 180
+  },
+  {
+    val1: '卡口19',
+    val2: 190
+  },
+  {
+    val1: '卡口20',
+    val2: 200
   }
 ]
 </script>
@@ -70,7 +130,6 @@ const dataSource = [
 .module {
   height: 100%;
   padding: 10px;
-  box-sizing: border-box;
   .top {
     height: 50px;
     background: url('@/views/cockpit/images/home1.png') no-repeat;
@@ -80,6 +139,7 @@ const dataSource = [
     justify-content: space-around;
     padding: 0 50px;
     margin-bottom: 10px;
+    font-size: 16px;
     svg {
       width: 30px;
       height: 30px;

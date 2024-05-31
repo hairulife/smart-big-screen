@@ -38,7 +38,8 @@ export default {
     },
     min = null,
     max = null,
-    data = null
+    data = null,
+    gridIndex = 0
   } = {}) {
     return {
       type,
@@ -50,11 +51,22 @@ export default {
       axisTick,
       min,
       max,
+      gridIndex,
       data
     }
   },
   // 数据轴
-  generateYAxis({ name = '', minInterval = 1 } = {}) {
+  generateYAxis({
+    name = '',
+    minInterval = 1,
+    gridIndex = 0,
+    axisLabel = {
+      fontFamily: this._fontFamily,
+      fontSize: this.getSize(14),
+      interval: 0,
+      color: this._color
+    }
+  } = {}) {
     return {
       name,
       nameTextStyle: {
@@ -64,12 +76,7 @@ export default {
       },
       type: 'value',
       minInterval,
-      axisLabel: {
-        fontFamily: this._fontFamily,
-        fontSize: this.getSize(14),
-        interval: 0,
-        color: this._color
-      },
+      axisLabel,
       // y 轴线
       axisLine: {
         show: false,
@@ -78,6 +85,7 @@ export default {
           width: 1
         }
       },
+      gridIndex,
       // 刻度
       axisTick: {
         show: false,
@@ -209,7 +217,13 @@ export default {
     }
   },
   // 柱图
-  generateBarSeries({ labelPosition = 'top', barMaxWidth = this.getSize(10) } = {}) {
+  generateBarSeries({
+    labelPosition = 'top',
+    barMaxWidth = this.getSize(10),
+    itemStyle = {
+      borderRadius: [this.getSize(4), this.getSize(4), 0, 0]
+    }
+  } = {}) {
     return {
       type: 'bar',
       // emphasis: {
@@ -217,9 +231,7 @@ export default {
       // },
       barMaxWidth,
       barGap: '0.5',
-      itemStyle: {
-        borderRadius: [this.getSize(4), this.getSize(4), 0, 0]
-      },
+      itemStyle,
       label: {
         show: true,
         position: labelPosition,
@@ -236,6 +248,29 @@ export default {
       }
     }
   },
+  // 柱图
+  generateHillSeries() {
+    return {
+      name: 'hill',
+      barMinHeight: 10,
+      type: 'pictorialBar',
+      barCategoryGap: '60%',
+      symbol: 'path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z',
+      itemStyle: {
+        color: '#4992ff'
+      },
+      label: {
+        normal: {
+          show: true,
+          position: 'top',
+          textStyle: {
+            color: '#fff'
+          }
+        }
+      },
+      z: 10
+    }
+  },
   // 饼图
   generatePieSeries({
     top = 0,
@@ -246,13 +281,14 @@ export default {
     roseType = false,
     label = {
       color: this._color,
-      fontFamily: this._fontFamily,
-      fontSize: this.getSize(14),
-      formatter: '{d}% {@[1]}',
+      fontSize: this.getSize(16),
+      formatter: '{b}: {@[1]}\n {d}%',
       overflow: 'break'
-    }
+    },
+    color = []
   } = {}) {
     return {
+      color,
       type: 'pie',
       top,
       left,
@@ -324,54 +360,67 @@ export default {
   generateGaugeSeries({
     data = [],
     width = this.getSize(20),
-    radius = this.getPercentage(60)
+    radius = this.getPercentage(60),
+    startAngle = 90,
+    endAngle = -270,
+    center = ['50%', '50%'],
+    pointer = {
+      show: false
+    },
+    axisTick = {
+      show: false
+    },
+    axisLabel = {
+      show: false
+    },
+    splitLine = {
+      show: false
+    },
+    min = 0,
+    max = 100,
+    detail = {
+      valueAnimation: true,
+      offsetCenter: [0, -this.getSize(15)],
+      fontSize: this.getSize(20),
+      lineHeight: this.getSize(20),
+      formatter: '{value}%',
+      color: 'inherit',
+      fontFamily: this._fontFamily
+    },
+    title = {
+      fontSize: this.getSize(14),
+      lineHeight: this.getSize(14),
+      offsetCenter: [0, this.getSize(15)],
+      fontFamily: this._fontFamily,
+      color: this._color
+    },
+    progress = {
+      show: true,
+      width
+    },
+    axisLine = {
+      lineStyle: {
+        width
+      }
+    }
   } = {}) {
     return {
       type: 'gauge',
-      startAngle: 90,
-      endAngle: -270,
-      center: ['50%', '50%'],
+      startAngle,
+      endAngle,
+      center,
       radius,
-      min: 0,
-      max: 100,
-      pointer: {
-        show: false
-      },
-      progress: {
-        show: true,
-        width
-      },
-      axisTick: {
-        show: false
-      },
-      axisLabel: {
-        show: false
-      },
-      axisLine: {
-        lineStyle: {
-          width
-        }
-      },
-      splitLine: {
-        show: false
-      },
+      min,
+      max,
+      pointer,
+      progress,
+      axisTick,
+      axisLabel,
+      axisLine,
+      splitLine,
       data,
-      detail: {
-        valueAnimation: true,
-        offsetCenter: [0, -this.getSize(15)],
-        fontSize: this.getSize(20),
-        lineHeight: this.getSize(20),
-        formatter: '{value}%',
-        color: 'inherit',
-        fontFamily: this._fontFamily
-      },
-      title: {
-        fontSize: this.getSize(14),
-        lineHeight: this.getSize(14),
-        offsetCenter: [0, this.getSize(15)],
-        fontFamily: this._fontFamily,
-        color: this._color
-      }
+      detail,
+      title
     }
   },
   // 生成地图
@@ -540,6 +589,17 @@ export default {
     tooltip = this.generateTooltip(),
     grid = this.generateGrid(),
     series = this.generateBarSeries()
+  } = {}) {
+    return { xAxis, yAxis, legend, tooltip, grid, series }
+  },
+  // 尖峰图
+  generateHillOption({
+    xAxis = this.generateXAxis(),
+    yAxis = this.generateYAxis(),
+    legend = this.generateLegend(),
+    tooltip = this.generateTooltip(),
+    grid = this.generateGrid(),
+    series = this.generateHillSeries()
   } = {}) {
     return { xAxis, yAxis, legend, tooltip, grid, series }
   },

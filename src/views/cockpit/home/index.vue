@@ -17,10 +17,11 @@ const cards = [
   },
   {
     title: '',
+    component: defineAsyncComponent(() => import('./modules/Center.vue')),
     style: {
       gridRow: '1 / 4',
       gridColumn: '2 / 3',
-      zIndex: 1
+      zIndex: -1
     }
   },
   {
@@ -31,18 +32,26 @@ const cards = [
     title: '车辆测速',
     component: defineAsyncComponent(() => import('./modules/VehicleSpeed.vue'))
   },
+  // {
+  //   title: '不符合项分布情况',
+  //   component: defineAsyncComponent(() => import('./modules/NonConformity.vue'))
+  // },
   {
-    title: '不符合项分布情况',
-    component: defineAsyncComponent(() => import('./modules/NonConformity.vue'))
+    title: '项目建筑效果图',
+    component: defineAsyncComponent(() => import('./modules/ArchitecturalRenderings.vue'))
   },
   {
     title: '智能电表当日用电统计',
     component: defineAsyncComponent(() => import('./modules/SmartMeter.vue'))
   },
   {
-    title: '每日高风险情况',
-    component: defineAsyncComponent(() => import('./modules/HighRisk.vue'))
+    title: 'AI 告警列表',
+    component: defineAsyncComponent(() => import('./modules/AiAlerts.vue'))
   }
+  // {
+  //   title: '每日高风险情况',
+  //   component: defineAsyncComponent(() => import('./modules/HighRisk.vue'))
+  // }
 ]
 </script>
 

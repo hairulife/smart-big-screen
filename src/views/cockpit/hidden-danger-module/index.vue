@@ -1,7 +1,46 @@
 <template>
-  <div>隐患模块</div>
+  <div class="cockpit-home">
+    <CardComp v-for="card in cards" :key="card.title" :title="card.title" :style="card.style">
+      <component :is="card.component" />
+    </CardComp>
+  </div>
 </template>
 
-<script setup></script>
+<script setup>
+import CardComp from '@/views/cockpit/components/CardComp.vue'
+import { defineAsyncComponent } from 'vue'
 
-<style lang="scss" scoped></style>
+const cards = [
+  {
+    title: '',
+    style: {
+      gridColumn: '1 / 4',
+      zIndex: -1
+    },
+    component: defineAsyncComponent(() => import('./modules/NavInfo.vue'))
+  },
+  {
+    title: '隐患类型统计'
+  },
+  {
+    title: '趋势图',
+    style: {
+      zIndex: -1
+    }
+  },
+  {
+    title: '各区域隐患数据'
+  }
+]
+</script>
+
+<style lang="scss" scoped>
+.cockpit-home {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 2fr;
+  gap: 10px;
+}
+</style>

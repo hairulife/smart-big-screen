@@ -1,5 +1,6 @@
 @import 'normalize';
 @import 'noto-sans-sc';
+@import 'variables';
 
 :root {
   font-family: 'Noto Sans SC', sans-serif;
@@ -34,5 +35,15 @@ body {
 @supports not selector(::-webkit-scrollbar) {
   body {
     scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+
+.action-btn {
+  height: 22px;
+  padding: 2px;
+  font-size: 12px;
+
+  & + & {
+    margin-left: 5px;
   }
 }
