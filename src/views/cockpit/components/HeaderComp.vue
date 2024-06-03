@@ -2,7 +2,7 @@
   <div class="header-comp">
     <FlowbiteCaretLeftSolid @click="changePage(-1)" :disabled="currentPage <= 1" />
     <div class="header-center">
-      <div class="title" style="order: 3">安吉梅溪智慧工地管理系统</div>
+      <div class="title" style="order: 3">智慧工地管理系统</div>
       <div
         class="menu-item"
         v-for="(route, index) in comRouters"
