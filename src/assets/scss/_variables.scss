@@ -1,4 +1,6 @@
-.el-input {
+.el-input,
+.el-select,
+.el-date-editor {
   --el-border-color: #274bc1;
   --el-input-hover-border-color: #274bc1;
 }

@@ -24,7 +24,7 @@ const cards = [
     style: {
       gridRow: '1 / 4',
       gridColumn: '2 / 3',
-      zIndex: -1
+      '--z-index-bg': -1
     },
     component: defineAsyncComponent(() => import('../home/modules/Center.vue'))
   },

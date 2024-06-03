@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, watch, nextTick, getCurrentInstance, markRaw } from 'vue'
+import { ref, watch, nextTick, getCurrentInstance, markRaw } from 'vue'
 import * as echarts from 'echarts'
 import chartAdapter from '../utils/chartAdapter.js'
 import chartPool from '../utils/chartPool.js'

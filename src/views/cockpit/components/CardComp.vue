@@ -1,5 +1,6 @@
 <template>
   <div class="cockpit-card">
+    <div class="bg"></div>
     <div class="cockpit-card-wrapper">
       <div class="cockpit-card-header" v-if="props.title !== ''">
         <div class="cockpit-card-header-title">{{ props.title }}</div>
@@ -28,8 +29,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
-
 const props = defineProps({
   loading: {
     type: Boolean,
@@ -47,10 +46,20 @@ const props = defineProps({
   width: 100%;
   overflow: hidden;
   position: relative;
-  border: 1px solid #294eaf;
-  background-color: #fff;
-  border-image: radial-gradient(#2961ca 70%, #0a267a 130%) 5;
-  background: linear-gradient(to bottom, hsla(222, 100%, 23%, 0.856) 10%, rgba(0, 0, 0, 0.5) 60%);
+
+  .bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: var(--z-index-bg, 0);
+
+    border: 1px solid #294eaf;
+    background-color: #fff;
+    border-image: radial-gradient(#2961ca 70%, #0a267a 130%) 5;
+    background: linear-gradient(to bottom, hsla(222, 100%, 23%, 0.856) 10%, rgba(0, 0, 0, 0.5) 60%);
+  }
   .cockpit-card-wrapper {
     height: 100%;
     position: relative;

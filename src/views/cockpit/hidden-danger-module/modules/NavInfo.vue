@@ -78,7 +78,7 @@ const lists = [
       width: 60px;
       height: 60px;
       margin-bottom: 10px;
-      ::v-deep svg {
+      :deep(svg) {
         width: 100%;
         height: 100%;
         color: var(--color);

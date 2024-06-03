@@ -21,7 +21,7 @@ const cards = [
     style: {
       gridRow: '1 / 4',
       gridColumn: '2 / 3',
-      zIndex: -1
+      '--z-index-bg': -1
     }
   },
   {

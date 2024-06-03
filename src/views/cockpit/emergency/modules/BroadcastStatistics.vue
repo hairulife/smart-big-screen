@@ -77,7 +77,7 @@ const lists = [
       display: flex;
       justify-content: center;
       align-items: center;
-      ::v-deep svg {
+      :deep(svg) {
         width: 36px;
         height: 36px;
         color: var(--color);

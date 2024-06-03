@@ -15,21 +15,24 @@ const cards = [
     title: '',
     style: {
       gridColumn: '1 / 4',
-      zIndex: -1
+      '--z-index-bg': -1
     },
     component: defineAsyncComponent(() => import('./modules/NavInfo.vue'))
   },
   {
-    title: '隐患类型统计'
+    title: '隐患类型统计',
+    component: defineAsyncComponent(() => import('./modules/HiddenDangerType.vue'))
   },
   {
     title: '趋势图',
     style: {
-      zIndex: -1
-    }
+      '--z-index-bg': -1
+    },
+    component: defineAsyncComponent(() => import('./modules/Trend.vue'))
   },
   {
-    title: '各区域隐患数据'
+    title: '各区域隐患数据',
+    component: defineAsyncComponent(() => import('./modules/HiddenDangerDataRegion.vue'))
   }
 ]
 </script>
