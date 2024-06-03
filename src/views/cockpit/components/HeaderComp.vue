@@ -2,7 +2,7 @@
   <div class="header-comp">
     <FlowbiteCaretLeftSolid @click="changePage(-1)" :disabled="currentPage <= 1" />
     <div class="header-center">
-      <div class="title" style="order: 3" @click="jumpHome">安吉梅溪智慧工地管理系统</div>
+      <div class="title" style="order: 3">安吉梅溪智慧工地管理系统</div>
       <div
         class="menu-item"
         v-for="(route, index) in comRouters"
@@ -55,10 +55,6 @@ const changePage = (step) => {
 const jumpTo = (route) => {
   if (!route) return
   router.push({ path: route.path, hash: '#' + currentPage.value })
-}
-
-const jumpHome = () => {
-  router.push({ path: '/agent' })
 }
 </script>
 
