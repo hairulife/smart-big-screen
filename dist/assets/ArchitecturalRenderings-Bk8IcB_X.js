@@ -1,1 +1,0 @@
-import{_ as c,o as r,c as t,a,u as e,C as o}from"./index-CorZdelc.js";const s="/cockpit/assets/home3-BFXsJ5rq.jpg",i={class:"module"},n={__name:"ArchitecturalRenderings",setup(l){return(_,p)=>(r(),t("div",i,[a(e(o),{class:"image",src:e(s),fit:"cover","preview-src-list":[e(s)]},null,8,["src","preview-src-list"])]))}},u=c(n,[["__scopeId","data-v-5a731d21"]]);export{u as default};
