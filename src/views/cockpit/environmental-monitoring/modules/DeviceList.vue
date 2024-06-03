@@ -4,15 +4,15 @@
       <div class="title">{{ item.name }}</div>
       <ul class="device-list">
         <li
-          v-for="item in item.list"
-          :key="item.id"
+          v-for="item1 in item.list"
+          :key="item1.id"
           class="device-item"
           :class="{
-            active: currentDevice == item.id
+            active: currentDevice == item1.id
           }"
         >
-          <div>{{ item.name }}</div>
-          <div>{{ item.status }}</div>
+          <div>{{ item1.name }}</div>
+          <div>{{ item1.status }}</div>
         </li>
       </ul>
     </div>
