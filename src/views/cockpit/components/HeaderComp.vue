@@ -29,6 +29,7 @@
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import FlowbiteCaretLeftSolid from './FlowbiteCaretLeftSolid.vue'
+import { ElMessage } from 'element-plus'
 const router = useRouter()
 const routes = ref(router.getRoutes().find((r) => r.path === '/') || {})
 routes.value = routes.value.children || []
@@ -54,6 +55,13 @@ const changePage = (step) => {
 
 const jumpTo = (route) => {
   if (!route) return
+  if (route.meta.close) {
+    ElMessage({
+      message: '暂未开放',
+      type: 'warning'
+    })
+    return
+  }
   router.push({ path: route.path, hash: '#' + currentPage.value })
 }
 </script>
