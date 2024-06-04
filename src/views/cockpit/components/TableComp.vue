@@ -243,6 +243,7 @@ export default {
       table-layout: fixed;
       color: #fff;
       thead {
+        height: 100%;
         background: #274bc1;
         tr {
           height: 100%;
