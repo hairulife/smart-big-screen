@@ -142,7 +142,7 @@ let cards = ref([
 <style lang="scss" scoped>
 .module {
   height: 100%;
-  padding: 100px;
+  padding: 120px;
   .environment {
     height: 100%;
     display: grid;

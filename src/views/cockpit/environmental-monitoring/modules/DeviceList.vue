@@ -237,7 +237,6 @@ const deviceList = [
       .device-item {
         display: flex;
         justify-content: space-between;
-
         line-height: 30px;
         border: 1px solid #588cec;
         padding: 0 15px;

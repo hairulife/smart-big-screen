@@ -20,8 +20,8 @@ const props = defineProps({
   height: 100%;
   .title {
     font-size: 18px;
-    height: 36px;
-    line-height: 36px;
+    height: 40px;
+    line-height: 40px;
     font-weight: bold;
     background-color: rgba(9, 62, 177, 0.8);
     padding: 0 15px;
@@ -39,8 +39,12 @@ const props = defineProps({
     }
   }
   .content {
-    height: calc(100% - 36px);
-    padding: 30px;
+    height: calc(100% - 40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-20px);
+    background-color: rgba(9, 62, 177, 0.2);
   }
 }
 </style>
