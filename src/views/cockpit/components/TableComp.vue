@@ -231,27 +231,22 @@ export default {
   background-color: rgba(2, 10, 21, 0.6);
   overflow: hidden;
   .data-dashboard-table-header-wrapper {
-    height: 36px;
     overflow: hidden;
     &.scrollbar-space {
       scrollbar-gutter: stable;
     }
     .data-dashboard-table-header {
-      height: 100%;
       width: 100%;
       border-collapse: collapse;
       table-layout: fixed;
       color: #fff;
       thead {
-        height: 100%;
         background: #274bc1;
         tr {
-          height: 100%;
           th {
-            height: 100%;
-            line-height: 100%;
+            height: 36px;
+            line-height: 36px;
             padding: 0 8px;
-            line-height: 100%;
             text-align: left;
             overflow: hidden;
             text-overflow: ellipsis;
