@@ -2,7 +2,7 @@
   <div class="header-comp">
     <FlowbiteCaretLeftSolid @click="changePage(-1)" :disabled="currentPage <= 1" />
     <div class="header-center">
-      <div class="title" style="order: 3">智慧工地管理系统</div>
+      <div class="title" style="order: 3">{{ title }}</div>
       <div
         class="menu-item"
         v-for="(route, index) in comRouters"
@@ -38,6 +38,7 @@ routes.value = routes.value.children || []
 const currentRoute = router.currentRoute
 routes.value = routes.value.sort((a, b) => a.meta.order - b.meta.order)
 
+const title = import.meta.env.VITE_APP_TITLE
 const currentPage = computed(() => {
   let currentHash = router.currentRoute.value.hash
   return parseInt(currentHash.replace('#', '')) || 1

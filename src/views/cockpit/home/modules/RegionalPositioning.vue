@@ -35,37 +35,72 @@ const option = ref({
       {
         ...chartAdapter.generateBarSeries(),
         color: 'rgba(98, 153, 255, .9)',
-        barMaxWidth: chartAdapter.getSize(15)
+        barMaxWidth: chartAdapter.getSize(15),
+        // 堆叠图
+        total: 'total'
       },
       {
         ...chartAdapter.generateBarSeries(),
         color: 'rgba(247, 221, 116, .9)',
         barMaxWidth: chartAdapter.getSize(15)
+      },
+      {
+        total: 'total',
+        name: '',
+        type: 'pictorialBar',
+        symbolSize: [14, 15],
+        color: 'red',
+        symbolOffset: [-11, 0],
+        tooltip: {
+          show: false
+        },
+        symbolPosition: 'end',
+        z: 13
+      },
+      {
+        //三个最低下的圆片
+        name: '',
+        type: 'pictorialBar',
+        symbolSize: [13, 15],
+        symbolOffset: [11, 0],
+        z: 13,
+        symbolPosition: 'end',
+        tooltip: {
+          show: false
+        }
       }
     ]
   }),
   dataset: {
-    dimensions: ['单位', '累计', '实时'],
+    dimensions: ['单位', '累计', '实时', 'val1', 'val2'],
     source: [
       {
         单位: '单位1',
         累计: 33,
-        实时: 23
+        实时: 23,
+        val1: 33,
+        val2: 23
       },
       {
         单位: '单位2',
         累计: 33,
-        实时: 23
+        实时: 23,
+        val1: 33,
+        val2: 23
       },
       {
         单位: '单位3',
         累计: 33,
-        实时: 23
+        实时: 23,
+        val1: 33,
+        val2: 23
       },
       {
         单位: '单位4',
         累计: 33,
-        实时: 23
+        实时: 23,
+        val1: 33,
+        val2: 23
       }
     ]
   }

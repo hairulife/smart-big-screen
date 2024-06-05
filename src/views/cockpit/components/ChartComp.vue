@@ -5,6 +5,7 @@
 <script setup>
 import { ref, watch, nextTick, getCurrentInstance, markRaw } from 'vue'
 import * as echarts from 'echarts'
+import 'echarts-gl'
 import chartAdapter from '../utils/chartAdapter.js'
 import chartPool from '../utils/chartPool.js'
 const chartRef = ref(null)
