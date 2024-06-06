@@ -59,7 +59,8 @@ const jumpTo = (route) => {
   if (route.meta.close) {
     ElMessage({
       message: '暂未开放',
-      type: 'warning'
+      type: 'warning',
+      appendTo: document.querySelector('.container')
     })
     return
   }

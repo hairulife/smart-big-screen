@@ -118,7 +118,8 @@ export default {
       fontSize: this.getSize(14),
       fontFamily: this._fontFamily,
       lineHeight: this.getSize(14)
-    }
+    },
+    data = undefined
   } = {}) {
     return {
       show,
@@ -134,7 +135,8 @@ export default {
       itemWidth: this.getSize(13),
       itemHeight: this.getSize(13),
       selected,
-      selectedMode
+      selectedMode,
+      data
     }
   },
   // 提示框

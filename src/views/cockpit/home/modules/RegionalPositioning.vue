@@ -19,6 +19,7 @@
 import ChartComp from '@/views/cockpit/components/ChartComp.vue'
 import chartAdapter from '@/views/cockpit/utils/chartAdapter.js'
 import { ref } from 'vue'
+import * as echarts from 'echarts'
 const userCount = [
   {
     num: 122,
@@ -34,23 +35,28 @@ const option = ref({
     series: [
       {
         ...chartAdapter.generateBarSeries(),
-        color: 'rgba(98, 153, 255, .9)',
-        barMaxWidth: chartAdapter.getSize(15),
-        // 堆叠图
-        total: 'total'
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          { offset: 0, color: 'rgba(98, 153, 255, .8)' },
+          { offset: 1, color: 'rgba(98, 153, 255, .1)' }
+        ]),
+        barMaxWidth: chartAdapter.getSize(16),
+        barWidth: chartAdapter.getSize(16)
       },
       {
         ...chartAdapter.generateBarSeries(),
-        color: 'rgba(247, 221, 116, .9)',
-        barMaxWidth: chartAdapter.getSize(15)
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          { offset: 0, color: 'rgba(247, 221, 116, .8)' },
+          { offset: 1, color: 'rgba(247, 221, 116, .1)' }
+        ]),
+        barMaxWidth: chartAdapter.getSize(16),
+        barWidth: chartAdapter.getSize(16)
       },
       {
-        total: 'total',
         name: '',
         type: 'pictorialBar',
-        symbolSize: [14, 15],
-        color: 'red',
-        symbolOffset: [-11, 0],
+        symbolSize: [chartAdapter.getSize(16), chartAdapter.getSize(8)],
+        color: 'rgba(98, 153, 255, 1)',
+        symbolOffset: [-12, -4],
         tooltip: {
           show: false
         },
@@ -61,15 +67,20 @@ const option = ref({
         //三个最低下的圆片
         name: '',
         type: 'pictorialBar',
-        symbolSize: [13, 15],
-        symbolOffset: [11, 0],
+        symbolSize: [chartAdapter.getSize(16), chartAdapter.getSize(8)],
+        symbolOffset: [12, -4],
+        color: 'rgba(247, 221, 116, 1)',
         z: 13,
         symbolPosition: 'end',
         tooltip: {
           show: false
         }
       }
-    ]
+    ],
+    legend: chartAdapter.generateLegend({
+      data: ['累计', '实时'],
+      selectedMode: false
+    })
   }),
   dataset: {
     dimensions: ['单位', '累计', '实时', 'val1', 'val2'],
@@ -97,6 +108,13 @@ const option = ref({
       },
       {
         单位: '单位4',
+        累计: 33,
+        实时: 23,
+        val1: 33,
+        val2: 23
+      },
+      {
+        单位: '单位5',
         累计: 33,
         实时: 23,
         val1: 33,
