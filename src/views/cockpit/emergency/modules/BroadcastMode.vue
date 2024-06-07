@@ -15,23 +15,24 @@
 <style lang="scss" scoped>
 .module {
   height: 100%;
-  padding: 10px;
   display: flex;
   gap: 10px;
+  padding: 20px;
   .icon {
     height: 100%;
     width: 150px;
-    background: url('@/views/cockpit/images/emergency1.png') no-repeat center center;
+    background: url('@/views/cockpit/images/emergency1.png') no-repeat 0 center;
     background-size: 150px 150px;
   }
   .content {
     display: flex;
     flex-wrap: wrap;
     align-content: center;
+    justify-content: center;
     gap: 10px;
     .item {
       height: 70px;
-      width: calc(50% - 10px);
+      width: calc(50% - 5px);
       font-size: 18px;
       display: flex;
       align-items: center;

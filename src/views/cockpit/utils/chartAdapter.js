@@ -223,7 +223,7 @@ export default {
     labelPosition = 'top',
     barMaxWidth = this.getSize(10),
     itemStyle = {
-      borderRadius: [this.getSize(4), this.getSize(4), 0, 0]
+      borderRadius: [0, 0, 0, 0]
     }
   } = {}) {
     return {
