@@ -17,7 +17,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: url('@/views/cockpit/images/home5.png') no-repeat center center;
+    background: url('@/views/cockpit/images/home5.jpg') no-repeat center center;
     background-size: cover;
     z-index: -1;
   }

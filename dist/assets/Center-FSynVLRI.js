@@ -1,1 +1,0 @@
-import{_ as c,o as s,c as o,v as t,x as a,h as _}from"./index-D2i7xCQP.js";const d={},n=e=>(t("data-v-734e3c07"),e=e(),a(),e),r={class:"module"},p=n(()=>_("div",{class:"bg"},null,-1)),i=[p];function l(e,h){return s(),o("div",r,i)}const u=c(d,[["render",l],["__scopeId","data-v-734e3c07"]]);export{u as default};
