@@ -35,18 +35,18 @@ const option = ref({
     series: [
       {
         ...chartAdapter.generateBarSeries(),
-        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-          { offset: 0, color: 'rgba(98, 153, 255, .8)' },
-          { offset: 1, color: 'rgba(98, 153, 255, .1)' }
+        color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+          { offset: 0, color: 'rgba(98, 153, 255, 1)' },
+          { offset: 1, color: 'rgba(98, 153, 255, .2)' }
         ]),
         barMaxWidth: chartAdapter.getSize(16),
         barWidth: chartAdapter.getSize(16)
       },
       {
         ...chartAdapter.generateBarSeries(),
-        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-          { offset: 0, color: 'rgba(247, 221, 116, .8)' },
-          { offset: 1, color: 'rgba(247, 221, 116, .1)' }
+        color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+          { offset: 0, color: 'rgba(247, 221, 116, 1)' },
+          { offset: 1, color: 'rgba(247, 221, 116, .2)' }
         ]),
         barMaxWidth: chartAdapter.getSize(16),
         barWidth: chartAdapter.getSize(16)
@@ -55,13 +55,13 @@ const option = ref({
         name: '',
         type: 'pictorialBar',
         symbolSize: [chartAdapter.getSize(16), chartAdapter.getSize(8)],
-        color: 'rgba(98, 153, 255, 1)',
+        color: 'rgb(98, 153, 255)',
         symbolOffset: [-12, -4],
         tooltip: {
           show: false
         },
         symbolPosition: 'end',
-        z: 13
+        z: 10
       },
       {
         //三个最低下的圆片
@@ -69,9 +69,31 @@ const option = ref({
         type: 'pictorialBar',
         symbolSize: [chartAdapter.getSize(16), chartAdapter.getSize(8)],
         symbolOffset: [12, -4],
-        color: 'rgba(247, 221, 116, 1)',
-        z: 13,
+        color: 'rgb(247, 221, 116)',
+        z: 10,
         symbolPosition: 'end',
+        tooltip: {
+          show: false
+        }
+      },
+      {
+        name: '',
+        type: 'pictorialBar',
+        symbolSize: [chartAdapter.getSize(16), chartAdapter.getSize(8)],
+        color: 'rgba(98, 153, 255, .8)',
+        symbolOffset: [-12, 4],
+        tooltip: {
+          show: false
+        },
+        z: 0
+      },
+      {
+        name: '',
+        type: 'pictorialBar',
+        symbolSize: [chartAdapter.getSize(16), chartAdapter.getSize(8)],
+        symbolOffset: [12, 4],
+        color: 'rgba(247, 221, 116, .8)',
+        z: 0,
         tooltip: {
           show: false
         }
@@ -97,28 +119,36 @@ const option = ref({
         累计: 33,
         实时: 23,
         val1: 33,
-        val2: 23
+        val2: 23,
+        val3: 33,
+        val4: 23
       },
       {
         单位: '单位3',
         累计: 33,
         实时: 23,
         val1: 33,
-        val2: 23
+        val2: 23,
+        val3: 33,
+        val4: 23
       },
       {
         单位: '单位4',
         累计: 33,
         实时: 23,
         val1: 33,
-        val2: 23
+        val2: 23,
+        val3: 33,
+        val4: 23
       },
       {
         单位: '单位5',
         累计: 33,
         实时: 23,
         val1: 33,
-        val2: 23
+        val2: 23,
+        val3: 33,
+        val4: 23
       }
     ]
   }
@@ -160,6 +190,7 @@ const option = ref({
   }
   .chart {
     height: calc(100% - 60px);
+    color: rgb(103, 91, 47);
   }
 }
 </style>

@@ -6,7 +6,7 @@
 
 <script setup>
 import { ElImage } from 'element-plus'
-import imgModule from '@/views/cockpit/images/home3.jpg'
+import imgModule from '@/views/cockpit/images/home3.webp'
 </script>
 
 <style lang="scss" scoped>
