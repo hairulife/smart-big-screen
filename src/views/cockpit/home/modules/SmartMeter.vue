@@ -1,6 +1,6 @@
 <template>
   <div class="module">
-    <div class="top">用电量：90.5KW/h</div>
+    <div class="top">用电量：{{ 730 + 545 }}KW/h</div>
     <div class="chart">
       <ChartComp mark="SmartMeter" :option="option" />
     </div>
@@ -22,33 +22,43 @@ const option = ref({
     series: [
       {
         ...chartAdapter.generateBarSeries(),
-        color: 'rgba(98, 153, 255, .9)',
-        barMaxWidth: chartAdapter.getSize(15)
+        color: 'rgb(4, 254, 249)',
+        barMaxWidth: chartAdapter.getSize(20)
+      },
+      {
+        // 分隔
+        type: 'pictorialBar',
+        itemStyle: {
+          normal: {
+            color: 'rgb(8, 20, 63)'
+          }
+        },
+        symbolRepeat: 'fixed',
+        symbolMargin: 3,
+        symbol: 'rect',
+        symbolClip: true,
+        symbolSize: [20, 2],
+        symbolPosition: 'start',
+        symbolOffset: [0, 3],
+        width: 2,
+        z: 0,
+        zlevel: 1,
+        tooltip: {
+          show: false
+        }
       }
     ]
   }),
   dataset: {
-    dimensions: ['单位', '累计', '实时'],
+    dimensions: ['单位', '累计'],
     source: [
       {
-        单位: '单位1',
-        累计: 33,
-        实时: 23
+        单位: '中建一局',
+        累计: 730
       },
       {
-        单位: '单位2',
-        累计: 33,
-        实时: 23
-      },
-      {
-        单位: '单位3',
-        累计: 33,
-        实时: 23
-      },
-      {
-        单位: '单位4',
-        累计: 33,
-        实时: 23
+        单位: '中安瑞力',
+        累计: 545
       }
     ]
   }
