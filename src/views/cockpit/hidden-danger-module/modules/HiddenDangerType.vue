@@ -35,7 +35,7 @@ const option = ref({
     bottom: chartAdapter.getPercentage(10)
   }),
   title: {
-    text: '398',
+    text: '0',
     subtext: '总数',
     left: 'center',
     top: chartAdapter.getPercentage(44),
@@ -52,10 +52,10 @@ const option = ref({
   dataset: {
     source: [
       ['product', 'sales'],
-      ['一号核岛', 61.1],
-      ['一号常规岛', 30.4],
-      ['二号核岛', 24.4],
-      ['二号常规岛', 14.1]
+      ['一号核岛', 0],
+      ['一号常规岛', 0],
+      ['二号核岛', 0],
+      ['二号常规岛', 0]
     ]
   }
 })

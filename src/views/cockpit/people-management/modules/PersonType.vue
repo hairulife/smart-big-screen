@@ -1,6 +1,6 @@
 <template>
   <div class="module">
-    <div class="top">总数：439人</div>
+    <div class="top">总数：{{ 68 + 29 + 15 + 248 + 22 }}人</div>
     <div class="chart">
       <ChartComp mark="PersonType" :option="option" />
     </div>
@@ -32,15 +32,19 @@ const option = ref({
     source: [
       {
         单位: '管理人员',
-        累计: 33
+        累计: 68
       },
       {
         单位: '企业人员',
-        累计: 23
+        累计: 29
       },
       {
-        单位: '施工',
-        累计: 123
+        单位: '专职安全管理人员',
+        累计: 15
+      },
+      {
+        单位: '施工人员',
+        累计: 248
       },
       {
         单位: '其他',

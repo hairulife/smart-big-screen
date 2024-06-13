@@ -20,11 +20,11 @@ import TableComp from '@/views/cockpit/components/TableComp.vue'
 const infos = [
   {
     title: '当前在场车辆',
-    value: 10
+    value: 75 + 15
   },
   {
     title: '今日累计在场车辆',
-    value: 20
+    value: 120 + 20
   }
 ]
 const columns = [
@@ -43,22 +43,19 @@ const columns = [
     dataIndex: 'val1'
   },
   {
-    title: '实时',
+    title: '当前在场',
     align: 'center',
     dataIndex: 'val2'
   },
   {
-    title: '累计',
+    title: '累计在场',
     align: 'center',
     dataIndex: 'val3'
   }
 ]
 const dataSource = [
-  { val1: '单位1', val2: 10, val3: 20 },
-  { val1: '单位2', val2: 20, val3: 30 },
-  { val1: '单位3', val2: 20, val3: 30 },
-  { val1: '单位4', val2: 20, val3: 30 },
-  { val1: '单位5', val2: 20, val3: 30 }
+  { val1: '浙江火电', val2: 75, val3: 120 },
+  { val1: '中核大地', val2: 15, val3: 20 }
 ]
 </script>
 

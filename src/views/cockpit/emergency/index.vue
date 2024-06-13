@@ -1,6 +1,12 @@
 <template>
   <div class="cockpit-home">
-    <CardComp v-for="card in cards" :key="card.title" :title="card.title" :style="card.style">
+    <CardComp
+      v-for="card in cards"
+      :key="card.title"
+      :title="card.title"
+      :style="card.style"
+      v-show="!card.isClose"
+    >
       <component :is="card.component" />
     </CardComp>
   </div>
@@ -8,44 +14,59 @@
 
 <script setup>
 import CardComp from '@/views/cockpit/components/CardComp.vue'
-import { defineAsyncComponent } from 'vue'
-
-const cards = [
-  {
-    title: '广播模式',
-    component: defineAsyncComponent(() => import('./modules/BroadcastMode.vue'))
-  },
-  {
-    title: '',
-    component: defineAsyncComponent(() => import('../home/modules/Center.vue')),
-    style: {
-      gridRow: '1 / 4',
-      gridColumn: '2 / 3',
-      '--z-index-bg': -1
+import { computed, defineAsyncComponent } from 'vue'
+import { useCenterStore } from '@/stores/cockpit.js'
+const centerStore = useCenterStore()
+const cards = computed(() => {
+  return [
+    {
+      isClose: centerStore.leftClose,
+      title: '广播模式',
+      component: defineAsyncComponent(() => import('./modules/BroadcastMode.vue'))
+    },
+    {
+      title: '',
+      component: defineAsyncComponent(() => import('../home/modules/Center.vue')),
+      style: {
+        gridRow: '1 / 4',
+        gridColumn:
+          !centerStore.leftClose && !centerStore.rightClose
+            ? '2 / 3'
+            : centerStore.leftClose && !centerStore.rightClose
+              ? '1 / 3'
+              : !centerStore.leftClose && centerStore.rightClose
+                ? '2 / 4'
+                : '1 / 4',
+        '--z-index-bg': -1
+      }
+    },
+    {
+      isClose: centerStore.rightClose,
+      title: '广播数量统计',
+      component: defineAsyncComponent(() => import('./modules/BroadcastStatistics.vue'))
+    },
+    {
+      isClose: centerStore.leftClose,
+      title: '应急广播',
+      component: defineAsyncComponent(() => import('./modules/EmergencyBroadcast.vue'))
+    },
+    {
+      isClose: centerStore.rightClose,
+      title: '今日广播数量',
+      component: defineAsyncComponent(() => import('./modules/TodayBroadcast.vue'))
+    },
+    {
+      isClose: centerStore.leftClose,
+      title: '正常广播',
+      component: defineAsyncComponent(() => import('./modules/NormalBroadcast.vue'))
+    },
+    {
+      isClose: centerStore.rightClose,
+      title: '设备状态统计',
+      component: defineAsyncComponent(() => import('./modules/DeviceStatus.vue'))
     }
-  },
-  {
-    title: '广播数量统计',
-    component: defineAsyncComponent(() => import('./modules/BroadcastStatistics.vue'))
-  },
-  {
-    title: '应急广播',
-    component: defineAsyncComponent(() => import('./modules/EmergencyBroadcast.vue'))
-  },
-
-  {
-    title: '今日广播数量',
-    component: defineAsyncComponent(() => import('./modules/TodayBroadcast.vue'))
-  },
-  {
-    title: '正常广播',
-    component: defineAsyncComponent(() => import('./modules/NormalBroadcast.vue'))
-  },
-  {
-    title: '设备状态统计',
-    component: defineAsyncComponent(() => import('./modules/DeviceStatus.vue'))
-  }
-]
+  ]
+})
 </script>
 
 <style lang="scss" scoped>

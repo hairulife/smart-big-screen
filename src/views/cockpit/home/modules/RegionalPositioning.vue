@@ -22,12 +22,12 @@ import { ref } from 'vue'
 import * as echarts from 'echarts'
 const userCount = [
   {
-    num: 122,
+    num: 282,
     name: '当前在场人数'
   },
   {
-    num: 152,
-    name: '今日累计人数'
+    num: 339,
+    name: '今日到场人数'
   }
 ]
 const option = ref({
@@ -100,55 +100,57 @@ const option = ref({
       }
     ],
     legend: chartAdapter.generateLegend({
-      data: ['累计', '实时'],
+      data: ['到场', '实时'],
       selectedMode: false
     })
   }),
   dataset: {
-    dimensions: ['单位', '累计', '实时', 'val1', 'val2'],
+    dimensions: ['单位', '到场', '实时', 'val1', 'val2'],
     source: [
       {
-        单位: '单位1',
-        累计: 33,
-        实时: 23,
-        val1: 33,
-        val2: 23
+        单位: '浙江火电',
+        到场: 270,
+        实时: 255,
+        val1: 270,
+        val2: 255,
+        val3: 270,
+        val4: 255
       },
       {
-        单位: '单位2',
-        累计: 33,
-        实时: 23,
-        val1: 33,
-        val2: 23,
-        val3: 33,
-        val4: 23
+        单位: '中核大地',
+        到场: 32,
+        实时: 30,
+        val1: 32,
+        val2: 30,
+        val3: 32,
+        val4: 30
       },
       {
-        单位: '单位3',
-        累计: 33,
-        实时: 23,
-        val1: 33,
-        val2: 23,
-        val3: 33,
-        val4: 23
+        单位: '龙源工程',
+        到场: 22,
+        实时: 15,
+        val1: 22,
+        val2: 15,
+        val3: 22,
+        val4: 15
       },
       {
-        单位: '单位4',
-        累计: 33,
-        实时: 23,
-        val1: 33,
-        val2: 23,
-        val3: 33,
-        val4: 23
+        单位: '中安瑞力',
+        到场: 8,
+        实时: 5,
+        val1: 8,
+        val2: 5,
+        val3: 8,
+        val4: 5
       },
       {
-        单位: '单位5',
-        累计: 33,
-        实时: 23,
-        val1: 33,
-        val2: 23,
-        val3: 33,
-        val4: 23
+        单位: '上海监理',
+        到场: 7,
+        实时: 7,
+        val1: 7,
+        val2: 7,
+        val3: 7,
+        val4: 7
       }
     ]
   }

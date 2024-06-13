@@ -1,6 +1,9 @@
 <template>
   <div class="module">
-    <div class="top">用电量：{{ 730 + 545 }}KW/h</div>
+    <div class="top">
+      用电量：暂未上报
+      <!-- {{ 730 + 545 }}KW/h -->
+    </div>
     <div class="chart">
       <ChartComp mark="SmartMeter" :option="option" />
     </div>
@@ -53,12 +56,12 @@ const option = ref({
     dimensions: ['单位', '累计'],
     source: [
       {
-        单位: '中建一局',
-        累计: 730
+        单位: '浙江火电',
+        累计: 54
       },
       {
-        单位: '中安瑞力',
-        累计: 545
+        单位: '中核大地',
+        累计: 36
       }
     ]
   }

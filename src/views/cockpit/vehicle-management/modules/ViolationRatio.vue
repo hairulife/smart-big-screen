@@ -16,7 +16,7 @@ const option = ref({
     })
   }),
   title: {
-    text: '398',
+    text: '0',
     subtext: '总数',
     left: 'center',
     top: 92,
@@ -33,10 +33,8 @@ const option = ref({
   dataset: {
     source: [
       ['product', 'sales'],
-      ['单位一', 61.1],
-      ['单位二', 30.4],
-      ['单位三', 24.4],
-      ['单位四', 14.1]
+      ['浙江火电', 0],
+      ['中核大地', 0]
     ]
   }
 })

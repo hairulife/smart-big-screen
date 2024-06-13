@@ -39,7 +39,7 @@ const option = ref({
   ],
   series: [
     chartAdapter.generateGaugeSeries({
-      data: [{ value: 50, name: '120次' }],
+      data: [{ value: 50, name: '0次' }],
       startAngle: 220,
       endAngle: 40,
       center: ['20%', '55%'],
@@ -94,7 +94,7 @@ const option = ref({
       }
     }),
     chartAdapter.generateGaugeSeries({
-      data: [{ value: 50, name: '120次' }],
+      data: [{ value: 50, name: '0次' }],
       startAngle: 220,
       endAngle: -40,
       center: ['50%', '45%'],
@@ -149,7 +149,7 @@ const option = ref({
       }
     }),
     chartAdapter.generateGaugeSeries({
-      data: [{ value: 50, name: '120次' }],
+      data: [{ value: 50, name: '0次' }],
       startAngle: 140,
       endAngle: 320,
       center: ['80%', '55%'],

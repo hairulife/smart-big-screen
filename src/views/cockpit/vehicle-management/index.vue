@@ -1,6 +1,12 @@
 <template>
   <div class="cockpit-home">
-    <CardComp v-for="card in cards" :key="card.title" :title="card.title" :style="card.style">
+    <CardComp
+      v-for="card in cards"
+      :key="card.title"
+      :title="card.title"
+      :style="card.style"
+      v-show="!card.isClose"
+    >
       <component :is="card.component" />
     </CardComp>
   </div>
@@ -8,44 +14,59 @@
 
 <script setup>
 import CardComp from '@/views/cockpit/components/CardComp.vue'
-import { defineAsyncComponent } from 'vue'
-
-const cards = [
-  {
-    title: '车辆管理',
-    component: defineAsyncComponent(() => import('./modules/VehicleManagement.vue'))
-  },
-  {
-    title: '',
-    style: {
-      gridRow: '1 / 4',
-      gridColumn: '2 / 3',
-      '--z-index-bg': -1
+import { computed, defineAsyncComponent } from 'vue'
+import { useCenterStore } from '@/stores/cockpit.js'
+const centerStore = useCenterStore()
+const cards = computed(() => {
+  return [
+    {
+      isClose: centerStore.leftClose,
+      title: '车辆管理',
+      component: defineAsyncComponent(() => import('./modules/VehicleManagement.vue'))
     },
-    component: defineAsyncComponent(() => import('../home/modules/Center.vue'))
-  },
-  {
-    title: '车辆测速',
-    style: {
-      gridRow: '1 / 3',
-      gridColumn: '3 / 4',
-      '--z-index-bg': -1
+    {
+      title: '',
+      style: {
+        gridRow: '1 / 4',
+        gridColumn:
+          !centerStore.leftClose && !centerStore.rightClose
+            ? '2 / 3'
+            : centerStore.leftClose && !centerStore.rightClose
+              ? '1 / 3'
+              : !centerStore.leftClose && centerStore.rightClose
+                ? '2 / 4'
+                : '1 / 4',
+        '--z-index-bg': -1
+      },
+      component: defineAsyncComponent(() => import('../home/modules/Center.vue'))
     },
-    component: defineAsyncComponent(() => import('../home/modules/VehicleSpeed.vue'))
-  },
-  {
-    title: '各单位违章车辆占比',
-    component: defineAsyncComponent(() => import('./modules/ViolationRatio.vue'))
-  },
-  {
-    title: '超速占比',
-    component: defineAsyncComponent(() => import('./modules/SpeedingRatio.vue'))
-  },
-  {
-    title: '按门岗统计',
-    component: defineAsyncComponent(() => import('./modules/GateStatistics.vue'))
-  }
-]
+    {
+      isClose: centerStore.rightClose,
+      title: '车辆测速',
+      style: {
+        gridRow: '1 / 3',
+        gridColumn: '3 / 4',
+        '--z-index-bg': -1
+      },
+      component: defineAsyncComponent(() => import('../home/modules/VehicleSpeed.vue'))
+    },
+    {
+      isClose: centerStore.leftClose,
+      title: '各单位违章车辆占比',
+      component: defineAsyncComponent(() => import('./modules/ViolationRatio.vue'))
+    },
+    {
+      isClose: centerStore.leftClose,
+      title: '超速占比',
+      component: defineAsyncComponent(() => import('./modules/SpeedingRatio.vue'))
+    },
+    {
+      isClose: centerStore.rightClose,
+      title: '按门岗统计',
+      component: defineAsyncComponent(() => import('./modules/GateStatistics.vue'))
+    }
+  ]
+})
 </script>
 
 <style lang="scss" scoped>

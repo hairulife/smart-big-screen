@@ -9,7 +9,7 @@
       </svg>
       <span>今日累计次数：</span>
       <span>
-        <span>10</span>
+        <span>3</span>
         <span>次</span>
       </span>
     </div>
@@ -45,83 +45,43 @@ const columns = [
 const dataSource = [
   {
     val1: '卡口1',
-    val2: 10
+    val2: '0'
   },
   {
     val1: '卡口2',
-    val2: 20
+    val2: '0'
   },
   {
     val1: '卡口3',
-    val2: 30
+    val2: '0'
   },
   {
     val1: '卡口4',
-    val2: 40
+    val2: '0'
   },
   {
     val1: '卡口5',
-    val2: 50
+    val2: '0'
   },
   {
     val1: '卡口6',
-    val2: 60
+    val2: '0'
   },
   {
     val1: '卡口7',
-    val2: 70
+    val2: '0'
   },
   {
     val1: '卡口8',
-    val2: 80
+    val2: '0'
   },
   {
     val1: '卡口9',
-    val2: 90
+    val2: '0'
   },
   {
     val1: '卡口10',
-    val2: 100
-  },
-  {
-    val1: '卡口11',
-    val2: 110
-  },
-  {
-    val1: '卡口12',
-    val2: 120
-  },
-  {
-    val1: '卡口13',
-    val2: 130
-  },
-  {
-    val1: '卡口14',
-    val2: 140
-  },
-  {
-    val1: '卡口15',
-    val2: 150
-  },
-  {
-    val1: '卡口16',
-    val2: 160
-  },
-  {
-    val1: '卡口17',
-    val2: 170
-  },
-  {
-    val1: '卡口18',
-    val2: 180
-  },
-  {
-    val1: '卡口19',
-    val2: 190
-  },
-  {
-    val1: '卡口20',
-    val2: 200
+    val2: '0'
   }
 ]
 </script>
