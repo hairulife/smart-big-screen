@@ -45,6 +45,9 @@ let camera = null
 let controls = null
 
 const initThree = () => {
+  if (!wrapEl.value || !wrapEl.value.clientWidth) {
+    return
+  }
   // 相机
   camera = new THREE.PerspectiveCamera(
     6,
@@ -68,7 +71,7 @@ const initThree = () => {
 const create = () => {
   const loader = new THREE.TextureLoader()
   loader.load(imgUrl, function (texture) {
-    // // 创建几何体
+    // 创建几何体
     // const geometry = new THREE.BoxGeometry(23.69, 16.39, 10)
     // const mesh = new THREE.Mesh(
     //   geometry,
@@ -77,12 +80,12 @@ const create = () => {
     //   })
     // )
     // scene.add(mesh)
-
     // 创建一个图片平面
     const geometry = new THREE.PlaneGeometry(23.69, 16.39)
     const material = new THREE.MeshBasicMaterial({
       map: texture,
-      side: THREE.DoubleSide
+      lightMap: texture,
+      lightMapIntensity: 2.5
     })
     const plane = new THREE.Mesh(geometry, material)
     scene.add(plane)

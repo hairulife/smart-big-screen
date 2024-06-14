@@ -1,0 +1,1 @@
+import{A as l,h as o}from"./index-C1tNLDN3.js";const a=l("cockpitCenter",()=>{const e=o(!1),t=o(!1);return{leftClose:e,rightClose:t,toggleLeft:()=>{e.value=!e.value},toggleRight:()=>{t.value=!t.value}}});export{a as u};
