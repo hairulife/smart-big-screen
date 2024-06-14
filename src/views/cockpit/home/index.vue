@@ -78,6 +78,9 @@ watch(
           : !centerStore.leftClose && centerStore.rightClose
             ? '2 / 4'
             : '1 / 4'
+  },
+  {
+    immediate: true
   }
 )
 
@@ -96,6 +99,9 @@ watch(
           : !centerStore.leftClose && centerStore.rightClose
             ? '2 / 4'
             : '1 / 4'
+  },
+  {
+    immediate: true
   }
 )
 </script>

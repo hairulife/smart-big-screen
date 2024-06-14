@@ -1,7 +1,7 @@
 <template>
   <div class="module canvasWrap">
     <!-- <div class="bg"></div> -->
-    <canvas class="canvasContainer"></canvas>
+    <canvas class="canvas-container"></canvas>
     <div class="info">
       <div class="item">
         <div class="icon1"></div>
@@ -108,7 +108,7 @@ const canvasInit = () => {
     instance.destroy()
   }
 
-  instance = new CanvasSelect('.canvasContainer', imgUrl)
+  instance = new CanvasSelect('.canvas-container', imgUrl)
   instance.readonly = true
   let option = [
     getType5(75, 750, '移动信号发射塔'),
@@ -129,7 +129,7 @@ const canvasInit = () => {
 }
 
 onMounted(() => {
-  canvasEl.value = document.querySelector('.canvasContainer')
+  canvasEl.value = document.querySelector('.canvas-container')
   canvasInit()
 
   // 监听 .canvasWrap 的变化
@@ -185,7 +185,7 @@ onMounted(() => {
       }
     }
   }
-  .canvasContainer {
+  .canvas-container {
     width: 100%;
     height: 100%;
   }

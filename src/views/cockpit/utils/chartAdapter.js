@@ -34,7 +34,12 @@ export default {
       fontFamily: this._fontFamily,
       fontSize: this.getSize(14),
       color: this._color,
-      hideOverlap: true // 隐藏重叠
+      interval: 0,
+      // 多余4个字符换行
+      formatter: (value) => {
+        return value.length > 4 ? value.replace(/(.{4})/g, '$1\n') : value
+      }
+      // hideOverlap: true // 隐藏重叠
     },
     min = null,
     max = null,
@@ -214,7 +219,7 @@ export default {
         // textBorderWidth: 1,
       },
       labelLayout: {
-        hideOverlap: true
+        // hideOverlap: true
       }
     }
   },
@@ -246,7 +251,7 @@ export default {
         textBorderWidth: 2
       },
       labelLayout: {
-        hideOverlap: true
+        // hideOverlap: true
       }
     }
   },
