@@ -1,5 +1,7 @@
 <template>
-  <div ref="wrapEl" class="module">
+  <div class="module canvasWrap">
+    <!-- <div class="bg"></div> -->
+    <canvas class="canvas-container"></canvas>
     <div class="info">
       <div class="item">
         <div class="icon1"></div>
@@ -26,92 +28,117 @@
 </template>
 
 <script setup>
-import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { ref, onMounted } from 'vue'
+import CanvasSelect from 'canvas-select'
+import imgUrl from '@/views/cockpit/images/home6.png'
 import { useCenterStore } from '@/stores/cockpit.js'
 const centerStore = useCenterStore()
-// import imgUrl from '@/views/cockpit/images/home6.png'
-import imgUrl from '@/views/cockpit/images/dt.png'
-const wrapEl = ref(null)
-// Three Init
-// 渲染器
-const renderer = new THREE.WebGLRenderer()
-// 场景
-const scene = new THREE.Scene()
-// 相机
-let camera = null
-
-let controls = null
-
-const initThree = () => {
-  // 相机
-  camera = new THREE.PerspectiveCamera(
-    6,
-    wrapEl.value.clientWidth / wrapEl.value.clientHeight,
-    0.1,
-    1000
-  )
-
-  camera.position.set(0, 0, 170)
-  camera.lookAt(scene.position)
-
-  // 设置渲染器的大小
-  renderer.setSize(wrapEl.value.clientWidth, wrapEl.value.clientHeight)
-  // 设置渲染器背景
-  renderer.setClearColor(0xffffff, 0)
-
-  // 将渲染器添加到页面
-  wrapEl.value.appendChild(renderer.domElement)
+const canvasEl = ref(null)
+let instance = null
+const getType1 = (x, y, label = '') => {
+  return {
+    labelFillStyle: '#fff',
+    textFillStyle: '#000',
+    lineWidth: 0,
+    fillStyle: 'red',
+    strokeStyle: 'red',
+    label,
+    coor: [
+      [x, y],
+      [x + 20, y + 15]
+    ],
+    labelFont: '16px sans-serif	',
+    active: false,
+    creating: false,
+    dragging: false,
+    index: 0,
+    type: 1,
+    labelUp: true
+  }
+}
+const getType2 = (x, y, label = '') => {
+  return {
+    labelFont: '16px sans-serif	',
+    labelFillStyle: '#fff',
+    textFillStyle: '#000',
+    fillStyle: 'red',
+    strokeStyle: 'red',
+    active: false,
+    creating: false,
+    dragging: false,
+    index: 0,
+    label,
+    coor: [
+      [x, y],
+      [x + 15, y + 25],
+      [x - 15, y + 25]
+    ],
+    type: 2,
+    labelUp: true
+  }
+}
+const getType5 = (x, y, label = '') => {
+  return {
+    labelFont: '16px sans-serif	',
+    labelFillStyle: '#fff',
+    textFillStyle: '#000',
+    fillStyle: 'red',
+    strokeStyle: 'red',
+    label,
+    coor: [x, y],
+    active: false,
+    creating: false,
+    dragging: false,
+    uuid: '3b23cf5e-ac84-4c52-bdf5-4b6bfa13d2df',
+    index: 4,
+    radius: 11,
+    type: 5,
+    labelUp: true
+  }
 }
 
-const create = () => {
-  const loader = new THREE.TextureLoader()
-  loader.load(imgUrl, function (texture) {
-    // // 创建几何体
-    // const geometry = new THREE.BoxGeometry(23.69, 16.39, 10)
-    // const mesh = new THREE.Mesh(
-    //   geometry,
-    //   new THREE.MeshBasicMaterial({
-    //     map: texture
-    //   })
-    // )
-    // scene.add(mesh)
+const canvasInit = () => {
+  let canvasWrapEl = document.querySelector('.canvasWrap')
+  if (!canvasWrapEl) {
+    return
+  }
+  canvasEl.value.width = document.querySelector('.canvasWrap').clientWidth
+  canvasEl.value.height = document.querySelector('.canvasWrap').clientHeight
+  if (instance) {
+    instance.destroy()
+  }
 
-    // 创建一个图片平面
-    const geometry = new THREE.PlaneGeometry(23.69, 16.39)
-    const material = new THREE.MeshBasicMaterial({
-      map: texture,
-      side: THREE.DoubleSide
-    })
-    const plane = new THREE.Mesh(geometry, material)
-    scene.add(plane)
-  })
-}
+  instance = new CanvasSelect('.canvas-container', imgUrl)
+  instance.readonly = true
+  let option = [
+    getType5(75, 750, '移动信号发射塔'),
+    getType2(80, 780),
 
-const render = () => {
-  renderer.render(scene, camera)
-  requestAnimationFrame(render)
+    getType1(1000, 980, '安健环通道'),
+    getType1(1040, 980),
+    getType1(1000, 1020),
+    getType1(1040, 1020),
+
+    getType2(1580, 1020),
+    getType5(1650, 1020, '临建办公楼'),
+    getType5(1590, 1120)
+  ]
+  // 加载数据
+  instance.setData(option)
+  instance.update()
 }
 
 onMounted(() => {
-  initThree()
-  create()
-  render()
-  controls = new OrbitControls(camera, renderer.domElement)
-  controls.enableRotate = false // 禁用旋转
-  // controls.enableZoom = false
+  canvasEl.value = document.querySelector('.canvas-container')
+  canvasInit()
 
   // 监听 .canvasWrap 的变化
   const observer = new ResizeObserver(() => {
     requestAnimationFrame(() => {
-      initThree()
-      controls = new OrbitControls(camera, renderer.domElement)
-      controls.enableRotate = false // 禁用旋转
-      // controls.enableZoom = false
+      canvasInit()
     })
   })
-  observer.observe(wrapEl.value)
+  observer.observe(document.querySelector('.canvasWrap'))
 })
 </script>
 
@@ -156,6 +183,21 @@ onMounted(() => {
       }
     }
   }
+  .canvas-container {
+    width: 100%;
+    height: 100%;
+  }
+  // .bg {
+  //   position: absolute;
+  //   width: 100%;
+  //   height: 100%;
+  //   top: 0;
+  //   left: 0;
+  //   background: url('@/views/cockpit/images/home6.jpg') no-repeat center center;
+  //   background-size: cover;
+  //   z-index: -1;
+  // }
+
   .left-btn {
     position: absolute;
     top: 50%;
@@ -199,26 +241,6 @@ onMounted(() => {
     }
     &:hover {
       background-color: rgb(38, 192, 215);
-    }
-  }
-  ::v-deep(.point) {
-    position: absolute;
-    background-color: red;
-    position: absolute;
-    width: 30px;
-    height: 30px;
-
-    &.point1 {
-      background: url('@/views/cockpit/images/map1.png') no-repeat center center;
-      background-size: 100% 100%;
-    }
-    &.point2 {
-      background: url('@/views/cockpit/images/map2.png') no-repeat center center;
-      background-size: 100% 100%;
-    }
-    &.point3 {
-      background: url('@/views/cockpit/images/map3.png') no-repeat center center;
-      background-size: 100% 100%;
     }
   }
 }
