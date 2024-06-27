@@ -1,5 +1,12 @@
 <template>
-  <div ref="wrapEl" class="module">
+  <div
+    ref="wrapEl"
+    class="module"
+    :style="{
+      '--lw': centerStore.leftClose ? '0px' : '25%',
+      '--rw': centerStore.rightClose ? '0px' : '25%'
+    }"
+  >
     <div class="info">
       <div class="item">
         <div class="icon1"></div>
@@ -14,7 +21,7 @@
         <div>枪机</div>
       </div>
     </div>
-    <div class="left-btn left-close" @click="centerStore.toggleLeft">
+    <div class="left-btn" @click="centerStore.toggleLeft">
       <img v-if="!centerStore.leftClose" src="../../images/left.png" alt="" />
       <img v-else src="../../images/right.png" alt="" />
     </div>
@@ -56,7 +63,7 @@ const initThree = () => {
     1000
   )
 
-  camera.position.set(0, 0, 170)
+  camera.position.set(0, 0, 110)
   camera.lookAt(scene.position)
 
   // 设置渲染器的大小
@@ -85,7 +92,7 @@ const create = () => {
     const material = new THREE.MeshBasicMaterial({
       map: texture,
       lightMap: texture,
-      lightMapIntensity: 2.5
+      lightMapIntensity: 3
     })
     const plane = new THREE.Mesh(geometry, material)
     scene.add(plane)
@@ -123,13 +130,14 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   position: relative;
+
   .info {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 10px;
+    right: calc(var(--rw) + 5px);
     background-color: rgba(24, 73, 182);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-    padding: 10px 20px;
+    padding: 10px 20px 10px 15px;
     color: #fff;
     font-size: 16px;
     display: flex;
@@ -162,7 +170,7 @@ onMounted(() => {
   .left-btn {
     position: absolute;
     top: 50%;
-    left: 0;
+    left: var(--lw);
     transform: translateY(-50%);
     width: 15px;
     height: 100px;
@@ -185,7 +193,7 @@ onMounted(() => {
   .right-btn {
     position: absolute;
     top: 50%;
-    right: 0;
+    right: var(--rw);
     transform: translateY(-50%);
     width: 15px;
     height: 100px;

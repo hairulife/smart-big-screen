@@ -5,6 +5,7 @@
       :key="card.title"
       :title="card.title"
       :style="card.style"
+      :class="card.class"
       v-show="!card.isClose"
     >
       <component :is="card.component" />
@@ -30,6 +31,7 @@ const cards = computed(() => {
     },
     {
       title: '',
+      class: 'fullscreen',
       style: {
         gridRow: '1 / 4',
         gridColumn:
@@ -47,17 +49,29 @@ const cards = computed(() => {
     {
       isClose: centerStore.rightClose,
       title: '人员类型',
-      component: defineAsyncComponent(() => import('./modules/PersonType.vue'))
+      component: defineAsyncComponent(() => import('./modules/PersonType.vue')),
+      style: {
+        gridRow: '1 / 2',
+        gridColumn: '3 / 4'
+      }
     },
     {
       isClose: centerStore.rightClose,
       title: '男女占比',
-      component: defineAsyncComponent(() => import('./modules/GenderRatio.vue'))
+      component: defineAsyncComponent(() => import('./modules/GenderRatio.vue')),
+      style: {
+        gridRow: '2 / 3',
+        gridColumn: '3 / 4'
+      }
     },
     {
       isClose: centerStore.rightClose,
       title: '年龄分布',
-      component: defineAsyncComponent(() => import('./modules/AgeDistribution.vue'))
+      component: defineAsyncComponent(() => import('./modules/AgeDistribution.vue')),
+      style: {
+        gridRow: '3 / 4',
+        gridColumn: '3 / 4'
+      }
     }
   ]
 })

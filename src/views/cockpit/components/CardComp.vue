@@ -44,8 +44,17 @@ const props = defineProps({
 <style lang="scss" scoped>
 .cockpit-card {
   width: 100%;
-  overflow: hidden;
+  overflow: auto;
   position: relative;
+  z-index: 1;
+  &.fullscreen {
+    left: 0;
+    top: 0;
+    width: calc(100%);
+    height: calc(100%);
+    position: fixed;
+    z-index: 0;
+  }
 
   .bg {
     width: 100%;
@@ -58,7 +67,7 @@ const props = defineProps({
     border: 1px solid #294eaf;
     background-color: #fff;
     border-image: radial-gradient(#2961ca 70%, #0a267a 130%) 5;
-    background: linear-gradient(to bottom, hsla(222, 100%, 23%, 0.856) 10%, rgba(0, 0, 0, 0.5) 60%);
+    background: linear-gradient(to bottom, hsla(222, 100%, 23%, 0.5) 10%, rgba(0, 0, 0, 0.5) 60%);
   }
   .cockpit-card-wrapper {
     height: 100%;

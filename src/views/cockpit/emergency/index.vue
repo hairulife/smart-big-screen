@@ -5,6 +5,7 @@
       :key="card.title"
       :title="card.title"
       :style="card.style"
+      :class="card.class"
       v-show="!card.isClose"
     >
       <component :is="card.component" />
@@ -22,11 +23,16 @@ const cards = computed(() => {
     {
       isClose: centerStore.leftClose,
       title: '广播模式',
-      component: defineAsyncComponent(() => import('./modules/BroadcastMode.vue'))
+      component: defineAsyncComponent(() => import('./modules/BroadcastMode.vue')),
+      style: {
+        gridRow: '1 / 2',
+        gridColumn: '1 / 2'
+      }
     },
     {
       title: '',
       component: defineAsyncComponent(() => import('../home/modules/Center.vue')),
+      class: 'fullscreen',
       style: {
         gridRow: '1 / 4',
         gridColumn:
@@ -43,27 +49,47 @@ const cards = computed(() => {
     {
       isClose: centerStore.rightClose,
       title: '广播数量统计',
-      component: defineAsyncComponent(() => import('./modules/BroadcastStatistics.vue'))
+      component: defineAsyncComponent(() => import('./modules/BroadcastStatistics.vue')),
+      style: {
+        gridRow: '1 / 2',
+        gridColumn: '3 / 4'
+      }
     },
     {
       isClose: centerStore.leftClose,
       title: '应急广播',
-      component: defineAsyncComponent(() => import('./modules/EmergencyBroadcast.vue'))
+      component: defineAsyncComponent(() => import('./modules/EmergencyBroadcast.vue')),
+      style: {
+        gridRow: '2 / 3',
+        gridColumn: '1 / 2'
+      }
     },
     {
       isClose: centerStore.rightClose,
       title: '今日广播数量',
-      component: defineAsyncComponent(() => import('./modules/TodayBroadcast.vue'))
+      component: defineAsyncComponent(() => import('./modules/TodayBroadcast.vue')),
+      style: {
+        gridRow: '2 / 3',
+        gridColumn: '3 / 4'
+      }
     },
     {
       isClose: centerStore.leftClose,
       title: '正常广播',
-      component: defineAsyncComponent(() => import('./modules/NormalBroadcast.vue'))
+      component: defineAsyncComponent(() => import('./modules/NormalBroadcast.vue')),
+      style: {
+        gridRow: '3 / 4',
+        gridColumn: '1 / 2'
+      }
     },
     {
       isClose: centerStore.rightClose,
       title: '设备状态统计',
-      component: defineAsyncComponent(() => import('./modules/DeviceStatus.vue'))
+      component: defineAsyncComponent(() => import('./modules/DeviceStatus.vue')),
+      style: {
+        gridRow: '3 / 4',
+        gridColumn: '3 / 4'
+      }
     }
   ]
 })

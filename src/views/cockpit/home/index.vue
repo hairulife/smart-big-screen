@@ -4,6 +4,7 @@
       v-for="card in cards"
       :key="card.title"
       :title="card.title"
+      :class="card.class"
       :style="card.style"
       v-show="!card.isClose"
     >
@@ -21,7 +22,11 @@ const cards = ref([
   {
     isClose: false,
     title: '人员定位',
-    component: markRaw(defineAsyncComponent(() => import('./modules/RegionalPositioning.vue')))
+    component: markRaw(defineAsyncComponent(() => import('./modules/RegionalPositioning.vue'))),
+    style: {
+      gridColumn: '1 / 2',
+      zIndex: 1
+    }
   },
   {
     title: '',
@@ -30,17 +35,26 @@ const cards = ref([
       gridRow: '1 / 4',
       gridColumn: '2 / 3',
       '--z-index-bg': -1
-    }
+    },
+    class: 'fullscreen'
   },
   {
     isClose: false,
     title: '今日隐患违章情况',
-    component: markRaw(defineAsyncComponent(() => import('./modules/HiddenDangersViolations.vue')))
+    component: markRaw(defineAsyncComponent(() => import('./modules/HiddenDangersViolations.vue'))),
+    style: {
+      gridColumn: '3 / 4',
+      zIndex: 1
+    }
   },
   {
     isClose: false,
     title: '车辆测速',
-    component: markRaw(defineAsyncComponent(() => import('./modules/VehicleSpeed.vue')))
+    component: markRaw(defineAsyncComponent(() => import('./modules/VehicleSpeed.vue'))),
+    style: {
+      gridColumn: '1 / 2',
+      zIndex: 1
+    }
   },
   // {
   //   title: '不符合项分布情况',
@@ -49,17 +63,29 @@ const cards = ref([
   {
     isClose: false,
     title: '项目建筑效果图',
-    component: markRaw(defineAsyncComponent(() => import('./modules/ArchitecturalRenderings.vue')))
+    component: markRaw(defineAsyncComponent(() => import('./modules/ArchitecturalRenderings.vue'))),
+    style: {
+      gridColumn: '3 / 4',
+      zIndex: 1
+    }
   },
   {
     isClose: false,
     title: '智能电表当日用电统计',
-    component: markRaw(defineAsyncComponent(() => import('./modules/SmartMeter.vue')))
+    component: markRaw(defineAsyncComponent(() => import('./modules/SmartMeter.vue'))),
+    style: {
+      gridColumn: '1 / 2',
+      zIndex: 1
+    }
   },
   {
     isClose: false,
     title: 'AI 告警列表',
-    component: markRaw(defineAsyncComponent(() => import('./modules/AiAlerts.vue')))
+    component: markRaw(defineAsyncComponent(() => import('./modules/AiAlerts.vue'))),
+    style: {
+      gridColumn: '3 / 4',
+      zIndex: 1
+    }
   }
 ])
 

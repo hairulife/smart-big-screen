@@ -5,6 +5,7 @@
       :key="card.title"
       :title="card.title"
       :style="card.style"
+      :class="card.class"
       v-show="!card.isClose"
     >
       <component :is="card.component" />
@@ -22,7 +23,11 @@ const cards = computed(() => {
     {
       isClose: centerStore.leftClose,
       title: '车辆管理',
-      component: defineAsyncComponent(() => import('./modules/VehicleManagement.vue'))
+      component: defineAsyncComponent(() => import('./modules/VehicleManagement.vue')),
+      style: {
+        gridRow: '1 / 2',
+        gridColumn: '1 / 2'
+      }
     },
     {
       title: '',
@@ -38,6 +43,7 @@ const cards = computed(() => {
                 : '1 / 4',
         '--z-index-bg': -1
       },
+      class: 'fullscreen',
       component: defineAsyncComponent(() => import('../home/modules/Center.vue'))
     },
     {
@@ -53,17 +59,29 @@ const cards = computed(() => {
     {
       isClose: centerStore.leftClose,
       title: '各单位违章车辆占比',
-      component: defineAsyncComponent(() => import('./modules/ViolationRatio.vue'))
+      component: defineAsyncComponent(() => import('./modules/ViolationRatio.vue')),
+      style: {
+        gridRow: '2 / 3',
+        gridColumn: '1 / 2'
+      }
     },
     {
       isClose: centerStore.leftClose,
       title: '超速占比',
-      component: defineAsyncComponent(() => import('./modules/SpeedingRatio.vue'))
+      component: defineAsyncComponent(() => import('./modules/SpeedingRatio.vue')),
+      style: {
+        gridRow: '3 / 4',
+        gridColumn: '1 / 2'
+      }
     },
     {
       isClose: centerStore.rightClose,
       title: '按门岗统计',
-      component: defineAsyncComponent(() => import('./modules/GateStatistics.vue'))
+      component: defineAsyncComponent(() => import('./modules/GateStatistics.vue')),
+      style: {
+        gridRow: '3 / 4',
+        gridColumn: '3 / 4'
+      }
     }
   ]
 })

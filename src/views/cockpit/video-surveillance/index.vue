@@ -5,6 +5,7 @@
       :key="card.title"
       :title="card.title"
       :style="card.style"
+      :class="card.class"
       v-show="!card.isClose"
     >
       <component :is="card.component" />
@@ -30,6 +31,7 @@ const cards = computed(() => {
     },
     {
       title: '',
+      class: 'fullscreen',
       style: {
         gridRow: '1 / 4',
         gridColumn:
@@ -47,17 +49,29 @@ const cards = computed(() => {
     {
       isClose: centerStore.rightClose,
       title: 'AI 告警列表',
-      component: defineAsyncComponent(() => import('../home/modules/AiAlerts.vue'))
+      component: defineAsyncComponent(() => import('../home/modules/AiAlerts.vue')),
+      style: {
+        gridRow: '1 / 2',
+        gridColumn: '3 / 4'
+      }
     },
     {
       isClose: centerStore.rightClose,
       title: '人工抓拍列表',
-      component: defineAsyncComponent(() => import('./modules/ManualCapture.vue'))
+      component: defineAsyncComponent(() => import('./modules/ManualCapture.vue')),
+      style: {
+        gridRow: '2 / 3',
+        gridColumn: '3 / 4'
+      }
     },
     {
       isClose: centerStore.rightClose,
       title: '监控设备统计',
-      component: defineAsyncComponent(() => import('./modules/EquipmentStatistics.vue'))
+      component: defineAsyncComponent(() => import('./modules/EquipmentStatistics.vue')),
+      style: {
+        gridRow: '3 / 4',
+        gridColumn: '3 / 4'
+      }
     }
   ]
 })

@@ -1,14 +1,23 @@
 <template>
   <div class="container">
-    <div class="bg-top-left"></div>
-    <div class="bg-top-right"></div>
-    <div class="bg-left"></div>
-    <div class="bg-right"></div>
-    <div class="bg-bottom-left"></div>
-    <div class="bg-bottom-right"></div>
     <HeaderComp />
     <div class="container-content">
       <RouterView />
+    </div>
+    <div class="bg-top-left"></div>
+    <div class="bg-top-right"></div>
+    <!-- <div class="bg-left"></div>
+    <div class="bg-right"></div>
+    <div class="bg-bottom-left"></div>
+    <div class="bg-bottom-right"></div> -->
+    <div
+      class="top-action"
+      :style="{
+        '--lw': centerStore.leftClose ? '0px' : '25%',
+        '--rw': centerStore.rightClose ? '0px' : '25%'
+      }"
+    >
+      <el-button type="primary" @click="openAdmission">人员进出信息</el-button>
     </div>
   </div>
 </template>
@@ -16,6 +25,8 @@
 <script setup>
 import { onMounted } from 'vue'
 import HeaderComp from './HeaderComp.vue'
+import { useCenterStore } from '@/stores/cockpit.js'
+const centerStore = useCenterStore()
 
 const width = 1920
 const height = 1080
@@ -35,6 +46,16 @@ onMounted(() => {
   setAppScale()
   window.addEventListener('resize', setAppScale)
 })
+
+const openAdmission = () => {
+  // 往 iframe 父级页面发送消息
+  window.parent.postMessage(
+    {
+      msg: 'openAdmission'
+    },
+    '*'
+  )
+}
 </script>
 
 <style lang="scss" scoped>
@@ -51,7 +72,14 @@ onMounted(() => {
     top: 102px;
     width: 100%;
     height: calc(100% - 102px);
-    padding: 0 40px 45px;
+    padding: 0 10px 10px;
+  }
+
+  .top-action {
+    position: absolute;
+    top: 100px;
+    z-index: 100;
+    left: calc(var(--lw) + 25px);
   }
 
   .bg-top-left {
